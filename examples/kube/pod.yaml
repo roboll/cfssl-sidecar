@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cfssl-sidecar-example
+  namespace: default
+spec:
+  containers:
+    - name: myapp
+      image: myapp-image
+      volueMounts:
+        - name: generated-certs
+          mountPath: /etc/myapp/certs
+    - name: cfssl-sidecar
+      image: roboll/cfssl-sidecar
+      args:
+        - -interval
+        - 24h
+        - -remote
+        - cfssl.example.com:8888
+        - -certname
+        - example
+        - -certpath
+        - /etc/myapp/certs
+        - -csrfile
+        - /etc/myapp/secrets/csr.json
+        - -config
+        - /etc/myapp/secrets/config.json
+        - -hostname
+        - hostnames,not,in,csr,json
+        - -label
+        - remote-cfssl-label
+        - -profile
+        - remote-cfssl-signing-profile
+      volumeMounts:
+        - name: generated-certs
+          mountPath: /etc/myapp/certs
+        - name: myapp-cfssl
+          mountPath: /etc/myapp/secrets
+          readOnly: true
+  volumes:
+    - name: generated-certs
+      emptyDir: {}
+    - name: cfssl-secrets
+      secret:
+        secretName: myapp-cfssl # a secret with the csr and auth key
