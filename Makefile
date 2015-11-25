@@ -9,31 +9,21 @@ PROJECT   := $(OWNER)/$(REPO)
 
 REGISTRY  :=
 
-GOOS      := linux
-GOARCH    := amd64
-
 PRE_RELEASE := tag clean-repo test
 
-.PHONY:  build docker release
-build:   cfssl-sidecar-linux-amd64
-docker:  build docker-build-root
+.PHONY:  docker release
+docker:  docker-build-root
 release: $(PRE_RELEASE) docker docker-push-root
 
 ###############################################################################
 # pre-release - test and validation
 ###############################################################################
 .PHONY: test
-test: ; go test ./...
+test: ; godep go test ./...
 
 ###############################################################################
 # build / release
 ###############################################################################
-GOBUILD := GO15VENDOREXPERIMENT=1 GOOS=$(GOOS) GOARCH=$(GOARCH) go build
-GOARGS  := -a -tags netgo -ldflags '-s -w -X main.release=$(VERSION)'
-
-%.tar.gz: %                ;tar czf $*.tar.gz -C $* .
-%-$(GOOS)-$(GOARCH): $(*D) ;$(GOBUILD) $(GOARGS) -o $@ ./$(*D)
-
 .PHONY: docker-build-root docker-build-%
 docker-build-root: ;docker build -t $(REGISTRY)$(PROJECT):$(VERSION) ./
 docker-build-%:    ;docker build -t $(REGISTRY)$(PROJECT)-$*:$(VERSION) ./$*

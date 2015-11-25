@@ -1,0 +1,92 @@
+{
+	"ImportPath": "github.com/kitkitcode/cfssl-sidecar",
+	"GoVersion": "go1.5.1",
+	"Deps": [
+		{
+			"ImportPath": "github.com/cloudflare/cfssl/api",
+			"Comment": "1.1.0-233-g0c0cbb5",
+			"Rev": "0c0cbb53b294e878378d887b019bfb8ebac286be"
+		},
+		{
+			"ImportPath": "github.com/cloudflare/cfssl/auth",
+			"Comment": "1.1.0-233-g0c0cbb5",
+			"Rev": "0c0cbb53b294e878378d887b019bfb8ebac286be"
+		},
+		{
+			"ImportPath": "github.com/cloudflare/cfssl/cli",
+			"Comment": "1.1.0-233-g0c0cbb5",
+			"Rev": "0c0cbb53b294e878378d887b019bfb8ebac286be"
+		},
+		{
+			"ImportPath": "github.com/cloudflare/cfssl/config",
+			"Comment": "1.1.0-233-g0c0cbb5",
+			"Rev": "0c0cbb53b294e878378d887b019bfb8ebac286be"
+		},
+		{
+			"ImportPath": "github.com/cloudflare/cfssl/crypto/pkcs11key",
+			"Comment": "1.1.0-233-g0c0cbb5",
+			"Rev": "0c0cbb53b294e878378d887b019bfb8ebac286be"
+		},
+		{
+			"ImportPath": "github.com/cloudflare/cfssl/crypto/pkcs7",
+			"Comment": "1.1.0-233-g0c0cbb5",
+			"Rev": "0c0cbb53b294e878378d887b019bfb8ebac286be"
+		},
+		{
+			"ImportPath": "github.com/cloudflare/cfssl/csr",
+			"Comment": "1.1.0-233-g0c0cbb5",
+			"Rev": "0c0cbb53b294e878378d887b019bfb8ebac286be"
+		},
+		{
+			"ImportPath": "github.com/cloudflare/cfssl/errors",
+			"Comment": "1.1.0-233-g0c0cbb5",
+			"Rev": "0c0cbb53b294e878378d887b019bfb8ebac286be"
+		},
+		{
+			"ImportPath": "github.com/cloudflare/cfssl/helpers",
+			"Comment": "1.1.0-233-g0c0cbb5",
+			"Rev": "0c0cbb53b294e878378d887b019bfb8ebac286be"
+		},
+		{
+			"ImportPath": "github.com/cloudflare/cfssl/info",
+			"Comment": "1.1.0-233-g0c0cbb5",
+			"Rev": "0c0cbb53b294e878378d887b019bfb8ebac286be"
+		},
+		{
+			"ImportPath": "github.com/cloudflare/cfssl/initca",
+			"Comment": "1.1.0-233-g0c0cbb5",
+			"Rev": "0c0cbb53b294e878378d887b019bfb8ebac286be"
+		},
+		{
+			"ImportPath": "github.com/cloudflare/cfssl/log",
+			"Comment": "1.1.0-233-g0c0cbb5",
+			"Rev": "0c0cbb53b294e878378d887b019bfb8ebac286be"
+		},
+		{
+			"ImportPath": "github.com/cloudflare/cfssl/ocsp/config",
+			"Comment": "1.1.0-233-g0c0cbb5",
+			"Rev": "0c0cbb53b294e878378d887b019bfb8ebac286be"
+		},
+		{
+			"ImportPath": "github.com/cloudflare/cfssl/signer",
+			"Comment": "1.1.0-233-g0c0cbb5",
+			"Rev": "0c0cbb53b294e878378d887b019bfb8ebac286be"
+		},
+		{
+			"ImportPath": "github.com/google/certificate-transparency/go",
+			"Rev": "a6bc717cf6431f7169cccfbb4d31e5013ebbd2d2"
+		},
+		{
+			"ImportPath": "github.com/miekg/pkcs11",
+			"Rev": "8a6cbe221eba56f58a03dd0c61be515b9ef4f7e5"
+		},
+		{
+			"ImportPath": "github.com/mreiferson/go-httpclient",
+			"Rev": "63fe23f7434723dc904c901043af07931f293c47"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/pkcs12",
+			"Rev": "c8b9e6388ef638d5a8a9d865c634befdc46a6784"
+		}
+	]
+}
