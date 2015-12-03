@@ -110,6 +110,17 @@ func main() {
 }
 
 func createKey(c *cfg) (*string, *string, error) {
+	keypath := path.Join(c.certpath, fmt.Sprintf("%s-key.pem", c.certname))
+	csrpath := path.Join(c.certpath, fmt.Sprintf("%s.csr", c.certname))
+
+	_, keyerr := os.Stat(keypath)
+	_, csrerr := os.Stat(csrpath)
+
+	if keyerr != nil && csrerr != nil {
+		log.Println("key and csr already exist")
+		return &keypath, &csrpath, nil
+	}
+
 	bytes, err := ioutil.ReadFile(c.csrfile)
 	if err != nil {
 		return nil, nil, err
@@ -126,9 +137,6 @@ func createKey(c *cfg) (*string, *string, error) {
 	if err != nil {
 		return nil, nil, err
 	}
-
-	keypath := path.Join(c.certpath, fmt.Sprintf("%s-key.pem", c.certname))
-	csrpath := path.Join(c.certpath, fmt.Sprintf("%s.csr", c.certname))
 
 	if err := ioutil.WriteFile(keypath, keybytes, 0600); err != nil {
 		return nil, nil, err
