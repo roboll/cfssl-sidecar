@@ -93,7 +93,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("key(%s) and csr(%s) updated.", *keypath, *csrpath)
+	log.Printf("key(%s) and csr(%s) up to date.", *keypath, *csrpath)
 
 	s.CSRFile = *csrpath
 	for {
@@ -116,7 +116,7 @@ func createKey(c *cfg) (*string, *string, error) {
 	_, keyerr := os.Stat(keypath)
 	_, csrerr := os.Stat(csrpath)
 
-	if keyerr != nil && csrerr != nil {
+	if keyerr == nil && csrerr == nil {
 		log.Println("key and csr already exist")
 		return &keypath, &csrpath, nil
 	}
