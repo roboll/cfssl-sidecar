@@ -95,9 +95,20 @@ func main() {
 	}
 	log.Printf("key(%s) and csr(%s) up to date.", *keypath, *csrpath)
 
-	s.CSRFile = *csrpath
 	for {
 		log.Println("updating certificate.")
+		log.Println("reloading config.")
+		if len(c.cfgfile) > 0 {
+			loadedCfg, err := config.LoadFile(c.cfgfile)
+			if err != nil {
+				log.Fatal(err)
+			}
+			s.CFG = loadedCfg
+		} else {
+			log.Println("WARNING: no config file specified.")
+		}
+
+		s.CSRFile = *csrpath
 		certpath, err := createCert(c, s)
 		if err != nil {
 			log.Fatal(err)
